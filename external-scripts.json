@@ -8,7 +8,7 @@
   "hubot-maps",
   "hubot-redis-brain",
   "hubot-rules",
-  "hubot-github-comment-notifier",
+  "hubot-github-mention-notifier",
   "hubot-shipit",
   "hubot-youtube"
 ]
