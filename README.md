@@ -212,3 +212,38 @@ Add the subdomain hubot should connect to. If you web URL looks like
 
 You may want to get comfortable with `heroku logs` and `heroku restart` if
 you're having issues.
+
+## How to setup ookami-mention-notifier
+
+1. Add organization webhooks
+   - https://yourapp.herokuapp.com/hubot/github-issue?room=github-mention&only-mentioned=1
+   - https://yourapp.herokuapp.com/hubot/github-pull-request?room=github-mention&only-mentioned=1
+2. Invite the hubot to the room above
+2. Deploy to heroku
+
+### ookami-mention-notifier for personal channel
+
+1. Setup variables for [hubot-github-mention-notifier][hubot-github-mention-notifier]
+   ```
+   heroku config:set BASE_ROOM_NAME=gh- HUBOT_TEAM_PATH=/app/_team.json HUBOT_SLACK_TOKEN=YOUR_TOKEN -a yourapp
+   ```
+2. Create your personal channel
+   - `{BASE_ROOM_NAME}-github_mention` e.x. `gh-github_mention`
+3. Invite the hubot to the channel you created
+4. If you use different name between GitHub and Slack, update [_team.json](#_team.json) and deploy the app
+
+#### _team.json
+
+If your team member use different name between GitHub and Slack, you need to specify that in _team.json.
+
+The format is
+
+```
+{
+  "@github_mention": "<@slack_mention>",
+  "@Riotherio": "<@riothenachos>",
+  "@takuyakobayashi": "<@kbtk>"
+}
+```
+
+[hubot-github-mention-notifier]: https://github.com/nafu/hubot-github-comment-notifier
